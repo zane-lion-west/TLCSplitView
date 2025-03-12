@@ -1,0 +1,245 @@
+/* Navbar Logo */
+.navbar_logo {
+  position: fixed;
+  top: 16px;
+  left: 22px;
+  z-index: 500;
+
+  .navbar_logo_img {
+    width: auto;
+    height: 75px;
+  }
+}
+
+/* Cube Button */
+.cubeButton {
+  position: fixed;
+  top: 2.2%;
+  right: 85px;
+  border: 2px solid black;
+  background-color: white;
+  color: var(--button-text-color);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 120px;
+  z-index: 780;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: grey;
+    color: white;
+  }
+}
+
+/* Privacy Link */
+.privacyLink {
+  position: fixed;
+  bottom: 3%;
+  right: 2%;
+  font-size: 1em;
+  color: black;
+  text-decoration: none;
+  z-index: 500;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+
+  &:hover {
+    color: grey;
+    text-shadow: 0 0 6px rgba(255,255,255,0.7);
+  }
+}
+
+/* Toggle Button (Burger Menu) */
+.toggle_button {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 650;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease;
+
+  .bar {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    border: 1px solid white;
+  }
+
+  &.open {
+    padding: 0;
+    top: 26px;
+    right: 27px;
+    padding: 19px 9px 20px 9px;
+    background-color: black;
+
+    .bar {
+      background-color: white;
+      width: 30px;
+      border: none;
+    }
+
+    .bar:nth-child(1) {
+      transform: rotate(45deg) translateY(1px);
+      position: absolute;
+    }
+
+    .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .bar:nth-child(3) {
+      transform: rotate(-45deg) translateY(1px);
+      position: absolute;
+    }
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 6%;
+  right: 0;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 10px;
+  z-index: 600;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* Menu Content */
+.menuContent {
+  flex-grow: 1;
+  width: 100%;
+}
+
+/* Main Menu Container */
+.mainMenuContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+
+  .mainMenuItems {
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    width: 100%;
+    
+    &:hover {
+      background-color: #717070;
+    }
+  }
+
+  .mainMenuLink {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: right;
+    padding: 0.8rem 0;
+    line-height: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      color: #ff6347;
+    }
+  }
+}
+
+/* Global UL styling */
+ul {
+  list-style: none;
+  padding: 1rem 0 0 0;
+  margin: 0;
+  width: 100%;
+
+  li {
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: right;
+    margin-right: 1.3rem;
+    padding: 0.6rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      color: white;
+      text-decoration: none;
+      flex-grow: 1;
+      text-align: right;
+      padding: 0.4rem 0 0 1rem;
+
+      &:hover {
+        color: #ff6347;
+      }
+    }
+
+    .arrow {
+      color: rgba(255, 255, 255, 0.864);
+      font-size: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: auto;
+      padding-left: 0.5rem;
+      transition: transform 0.1s ease, color 0.1s ease;
+
+      &:hover {
+        color: #ff6347;
+      }
+    }
+  }
+}
+
+/* Miscellaneous Items */
+.backButton {
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 1rem;
+
+  &:hover {
+    color: #ff6347;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  z-index: 598;
+}

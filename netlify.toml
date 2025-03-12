@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"
+  publish = "dist"  # Adjust based on your project setup
+
+[context.production.environment]
+  GO_VERSION = "1.19"

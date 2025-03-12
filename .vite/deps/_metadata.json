@@ -1,0 +1,49 @@
+{
+  "hash": "00e22149",
+  "configHash": "d8f0e8ed",
+  "lockfileHash": "6e856402",
+  "browserHash": "1751d5d8",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "f7f1f595",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "fdcfc2d2",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "75445e3f",
+      "needsInterop": false
+    },
+    "prop-types": {
+      "src": "../../node_modules/prop-types/index.js",
+      "file": "prop-types.js",
+      "fileHash": "1b274b27",
+      "needsInterop": true
+    },
+    "react-motion": {
+      "src": "../../node_modules/react-motion/lib/react-motion.js",
+      "file": "react-motion.js",
+      "fileHash": "b94f8f18",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-WNPTCGAH": {
+      "file": "chunk-WNPTCGAH.js"
+    },
+    "chunk-ZNAOO6ZH": {
+      "file": "chunk-ZNAOO6ZH.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
+}
