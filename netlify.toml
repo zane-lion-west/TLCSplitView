@@ -1,6 +1,9 @@
 [build]
-  command = "npm install --legacy-peer-deps && npm run build"
-  publish = "dist"  # Adjust based on your project setup
+  command = "yarn install --ignore-engines && yarn build"
+  publish = "dist"
 
-[context.production.environment]
-  GO_VERSION = "1.19"
+# Optional: specify Node version if needed
+[[plugins]]
+  package = "@netlify/plugin-node"
+  [plugins.inputs]
+    node_version = "18"
