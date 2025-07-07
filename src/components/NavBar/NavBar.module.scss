@@ -1,8 +1,8 @@
 /* Navbar Logo */
 .navbar_logo {
   position: fixed;
-  top: 16px;
-  left: 22px;
+  top: 0.25px;
+  left: 10px;
   z-index: 500;
 
   .navbar_logo_img {
@@ -56,8 +56,8 @@
 /* Toggle Button (Burger Menu) */
 .toggle_button {
   position: fixed;
-  top: 25px;
-  right: 25px;
+  top: 15px;
+  right: 15px;
   padding: 10px;
   cursor: pointer;
   z-index: 650;

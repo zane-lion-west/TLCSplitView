@@ -1,236 +1,101 @@
-.comparisonContainer {
+.wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  height: 100vh;
   width: 100%;
-  height: 100vh; /* Full viewport height */
-}
-
-/* Desktop (Left) Container: occupies 60% (or adjust as needed) */
-.desktopContainer {
-  flex: 0 0 60%;
-  position: relative;
   overflow: hidden;
-
-  .desktopIframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: 1;
-  }
-
-  .desktopSkin {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    z-index: 2;
-  }
+  background: #f9f9f9;
 }
 
-/* Mobile (Right) Container: occupies 40% */
-.mobileContainer {
-  flex: 0 0 40%;
+.urlBarFixed {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  padding: 0.25rem 1rem; 
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.urlLabel {
+  font-weight: 500;
+  font-size: 1.125rem;
+  padding: 0 1rem;
+}
+
+.urlInput {
+  width: 50%; /* Reduced width for a centered look */
+  max-width: 600px;
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.splitPaneWrapper {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.desktopPane, .mobilePane {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
   overflow: hidden;
-
-  /* Fixed Mobile Viewport that simulates a mobile device */
-  .mobileViewport {
-    width: 428px;   /* Fixed width for mobile simulation */
-    height: 926px;  /* Fixed height for mobile simulation */
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #ccc; /* Optional: simulate a device border */
-    z-index: 1;
-  }
-
-  .mobileIframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .mobileSkin {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90%;
-    height: 90%;
-    transform: translate(-50%, -50%);
-    object-fit: contain;
-    pointer-events: none;
-    z-index: 2;
-  }
 }
 
-/* Responsive: Optionally stack vertically on small screens */
-@media (max-width: 768px) {
-  .comparisonContainer {
-    flex-direction: column;
-    height: auto;
-  }
+.label {
+  padding: 0.25rem;
+  text-align: center;
+  font-weight: 600;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
 }
 
+.desktopIframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
 
+.mobileFrame {
+  width: 375px;
+  height: 667px;
+  margin: 1rem auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: #fff;
+}
 
+.mobileIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-// .comparisonContainer {
-//     display: flex;
-//     flex-direction: row;
-//     width: 100%;
-//     height: 100vh; /* Full viewport height */
-//   }
-  
-//   /* Left (Desktop) Container: 60% width */
-//   .desktopContainer {
-//     flex: 0 0 60%;
-//     position: relative;
-//     overflow: hidden;
-  
-//     .desktopIframe {
-//       width: 100%;
-//       height: 100%;
-//       border: none;
-//       z-index: 1;
-//     }
-  
-//     .desktopSkin {
-//       position: absolute;
-//       top: 0;
-//       left: -290px;
-//       width: 200%;
-//       height: 100%;
-//       object-fit:cover; /* Ensures the skin scales properly */
-//       pointer-events: none;
-//       z-index: 2;
-//     }
-//   }
-  
-//   /* Right (Mobile) Container: 40% width */
-//   .mobileContainer {
-//     flex: 0 0 40%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     position: relative;
-//     overflow: hidden;
-  
-//     .mobileViewport {
-//       width: 375px;    /* Adjust as needed for typical mobile width */
-//       height: 667px;   /* Adjust as needed for typical mobile height */
-//       position: relative;
-//       overflow: hidden;
-//       border: 1px solid #ccc;  /* Optional: simulate device border */
-//       z-index: 1;
-//     }
-  
-//     .mobileIframe {
-//       width: 100%;
-//       height: 100%;
-//       border: none;
-//     }
-  
-//     .mobileSkin {
-//       position: absolute;
-//       top: 165px;
-//       left: 290px;
-//       width: 440px;
-//       height: auto;
-//       object-fit: contain;
-//       pointer-events: none;
-//       z-index: 2;
-//     }
-//   }
-  
-//   /* Responsive: Optionally stack vertically on small screens */
-//   @media (max-width: 768px) {
-//     .comparisonContainer {
-//       flex-direction: column;
-//       height: auto;
-//     }
-//   }
-  
+.deviceSelect {
+  margin-left: 1rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
 
-// // .comparisonContainer {
-// //     display: flex;
-// //     flex-direction: row;
-// //     width: 100%;
-// //     height: 100vh; // Full viewport height
-// //   }
-  
-// //   /* Desktop View Container */
-// //   .desktopContainer {
-// //     flex: 1;
-// //     position: relative;
-// //     overflow: hidden;
-// //   }
-  
-// //   .desktopIframe {
-// //     width: 100%;
-// //     height: 100%;
-// //     border: none;
-// //     z-index: 1;
-// //   }
-  
-// //   .desktopSkin {
-// //     position: absolute;
-// //     top: 0;
-// //     left: 0;
-// //     width: 100%;
-// //     height: 100%;
-// //     object-fit: cover;
-// //     pointer-events: none;
-// //     z-index: 2;
-// //   }
-  
-// //   /* Mobile View Container */
-// //   .mobileContainer {
-// //     flex: 1;
-// //     display: flex;
-// //     justify-content: center;
-// //     align-items: center;
-// //     position: relative;
-// //     overflow: hidden;
-// //   }
-  
-// //   /* Simulated Mobile Viewport */
-// //   .mobileViewport {
-// //     width: 375px;    // Typical mobile width (adjust as needed)
-// //     height: 667px;   // Typical mobile height (adjust as needed)
-// //     position: relative;
-// //     overflow: hidden;
-// //     border: 1px solid #ccc; /* Optional: simulate a device border */
-// //     z-index: 1;
-// //   }
-  
-// //   .mobileIframe {
-// //     width: 100%;
-// //     height: 100%;
-// //     border: none;
-// //   }
-  
-// //   .mobileSkin {
-// //     position: absolute;
-// //     top: 10rem;
-// //     left: 26rem;
-// //     width: 35%;
-// //     height: auto;
-// //     object-fit: cover;
-// //     pointer-events: none;
-// //     z-index: 20;
-// //   }
-  
-// //   /* Optional Responsive Adjustments:
-// //      Stack containers vertically on narrow screens */
-// //   @media (max-width: 768px) {
-// //     .comparisonContainer {
-// //       flex-direction: column;
-// //       height: auto;
-// //     }
-// //   }
-  
+  &:hover {
+    border-color: #999;
+  }
+
+  &:focus {
+    border-color: #0070f3;
+    box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+  }
+}
