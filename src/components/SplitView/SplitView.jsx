@@ -56,9 +56,9 @@
 
 import { useState } from 'react';
 import SplitPane from 'react-split-pane';
-import s from './ComparisonView.module.scss';
+import s from './SplitView.module.scss';
 
-export default function ComparisonView() {
+export default function SplitView() {
   const [url, setUrl] = useState('https://example.com');
   const [device, setDevice] = useState('legacy');
 
@@ -114,3 +114,67 @@ export default function ComparisonView() {
     </div>
   );
 }
+
+// import { useState } from 'react';
+// import Split from '@devbookhq/splitter';
+// import s from './SplitView.module.scss';
+
+// export default function SplitView() {
+//   const [url, setUrl] = useState('https://example.com');
+//   const [device, setDevice] = useState('legacy');
+
+//   const deviceSizes = {
+//     iphone: { width: 390, height: 844 },
+//     galaxy: { width: 412, height: 915 },
+//     legacy: { width: 375, height: 667 },
+//   };
+
+//   const { width, height } = deviceSizes[device];
+
+//   return (
+//     <div className={s.wrapper}>
+//       <div className={s.urlBarFixed}>
+//         <input
+//           type="text"
+//           placeholder="Enter website URL..."
+//           value={url}
+//           onChange={(e) => setUrl(e.target.value)}
+//           className={s.urlInput}
+//         />
+//         <select
+//           value={device}
+//           onChange={(e) => setDevice(e.target.value)}
+//           className={s.deviceSelect}
+//         >
+//           <option value="iphone">iPhone</option>
+//           <option value="galaxy">Samsung Galaxy</option>
+//           <option value="legacy">Legacy</option>
+//         </select>
+//       </div>
+
+//       <div className={s.splitPaneWrapper}>
+//         <Split
+//           direction="vertical"
+//           initialSizes={[80, 20]}
+//           minSizes={[400, 200]}
+//           gutterSize={8}
+//         >
+//           <div className={s.desktopPane}>
+//             <div className={s.label}>Desktop View</div>
+//             <iframe src={url} title="Desktop View" className={s.desktopIframe} />
+//           </div>
+
+//           <div className={s.mobilePane}>
+//             <div className={s.label}>Mobile View ({device})</div>
+//             <div
+//               className={s.mobileFrame}
+//               style={{ width: `${width}px`, height: `${height}px` }}
+//             >
+//               <iframe src={url} title="Mobile View" className={s.mobileIframe} />
+//             </div>
+//           </div>
+//         </Split>
+//       </div>
+//     </div>
+//   );
+// }
