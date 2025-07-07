@@ -1,9 +1,7 @@
+
 [build]
-  command = "yarn install --ignore-engines && yarn build"
+  command = "npm install --legacy-peer-deps && npm run build"
   publish = "dist"
 
-# Optional: specify Node version if needed
-[[plugins]]
-  package = "@netlify/plugin-node"
-  [plugins.inputs]
-    node_version = "18"
+[context.production.environment]
+  NODE_VERSION = "18"
