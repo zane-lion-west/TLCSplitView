@@ -1,62 +1,13 @@
-// // SplitView.jsx - Polished, interactive TLC SplitView live demo component
-
-// import { useState } from 'react';
-// import SplitPane from 'react-split-pane';
-// import s from './ComparisonView.module.scss';
-
-// export default function SplitView() {
-//   const [url, setUrl] = useState('https://example.com');
-
-//   return (
-//     <div className={s.wrapper}>
-//       <div className={s.urlBar}>
-//         <input
-//           type="text"
-//           placeholder="Enter website URL..."
-//           value={url}
-//           onChange={(e) => setUrl(e.target.value)}
-//           className={s.urlInput}
-//         />
-//       </div>
-
-//       <SplitPane split="vertical" minSize={200} defaultSize="50%">
-//         {/* Desktop View */}
-//         <div className={s.pane}>
-//           <div className={s.label}>Desktop View</div>
-//           <iframe
-//             src={url}
-//             title="Desktop View"
-//             className={s.iframe}
-//             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-//           />
-//         </div>
-
-//         {/* Mobile View */}
-//         <div className={s.pane}>
-//           <div className={s.label}>Mobile View</div>
-//           <div className={s.mobileFrame}>
-//             <iframe
-//               src={url}
-//               title="Mobile View"
-//               className={s.mobileIframe}
-//               sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-//             />
-//           </div>
-//         </div>
-//       </SplitPane>
-//     </div>
-//   );
-// }
-
-
-
-
-// SplitView.jsx with react-split-pane reintroduced for TLC polished side-by-side control
-
-
 import { useState } from 'react';
 import SplitPane from 'react-split-pane';
 import s from './SplitView.module.scss';
+
+// 1. Protocol-normalizer helper
+function ensureProtocol(rawUrl) {
+  return /^https?:\/\//i.test(rawUrl)
+    ? rawUrl
+    : `https://${rawUrl}`;
+}
 
 export default function SplitView() {
   const [url, setUrl] = useState('https://example.com');
@@ -67,8 +18,10 @@ export default function SplitView() {
     galaxy: { width: 412, height: 915 }, // Samsung Galaxy S23
     legacy: { width: 375, height: 667 }, // Current legacy default
   };
-
   const { width, height } = deviceSizes[device];
+
+  // 2. Normalize user-entered URL
+  const safeUrl = ensureProtocol(url);
 
   return (
     <div className={s.wrapper}>
@@ -97,7 +50,12 @@ export default function SplitView() {
         <SplitPane split="vertical" minSize={400} defaultSize="80%">
           <div className={s.desktopPane}>
             <div className={s.label}>Desktop View</div>
-            <iframe src={url} title="Desktop View" className={s.desktopIframe} />
+            {/* 3. Use safeUrl */}
+            <iframe
+              src={safeUrl}
+              title="Desktop View"
+              className={s.desktopIframe}
+            />
           </div>
 
           <div className={s.mobilePane}>
@@ -106,7 +64,11 @@ export default function SplitView() {
               className={s.mobileFrame}
               style={{ width: `${width}px`, height: `${height}px` }}
             >
-              <iframe src={url} title="Mobile View" className={s.mobileIframe} />
+              <iframe
+                src={safeUrl}
+                title="Mobile View"
+                className={s.mobileIframe}
+              />
             </div>
           </div>
         </SplitPane>
@@ -115,8 +77,13 @@ export default function SplitView() {
   );
 }
 
+
+
+// // SplitView.jsx with react-split-pane reintroduced for TLC polished side-by-side control
+
+
 // import { useState } from 'react';
-// import Split from '@devbookhq/splitter';
+// import SplitPane from 'react-split-pane';
 // import s from './SplitView.module.scss';
 
 // export default function SplitView() {
@@ -124,9 +91,9 @@ export default function SplitView() {
 //   const [device, setDevice] = useState('legacy');
 
 //   const deviceSizes = {
-//     iphone: { width: 390, height: 844 },
-//     galaxy: { width: 412, height: 915 },
-//     legacy: { width: 375, height: 667 },
+//     iphone: { width: 390, height: 844 }, // iPhone 14
+//     galaxy: { width: 412, height: 915 }, // Samsung Galaxy S23
+//     legacy: { width: 375, height: 667 }, // Current legacy default
 //   };
 
 //   const { width, height } = deviceSizes[device];
@@ -134,6 +101,7 @@ export default function SplitView() {
 //   return (
 //     <div className={s.wrapper}>
 //       <div className={s.urlBarFixed}>
+//         <p className={s.urlLabel}>Please enter a URL:</p>
 //         <input
 //           type="text"
 //           placeholder="Enter website URL..."
@@ -141,6 +109,7 @@ export default function SplitView() {
 //           onChange={(e) => setUrl(e.target.value)}
 //           className={s.urlInput}
 //         />
+//         <p className={s.urlLabel}>Choose your Mobile device:</p>
 //         <select
 //           value={device}
 //           onChange={(e) => setDevice(e.target.value)}
@@ -153,12 +122,7 @@ export default function SplitView() {
 //       </div>
 
 //       <div className={s.splitPaneWrapper}>
-//         <Split
-//           direction="vertical"
-//           initialSizes={[80, 20]}
-//           minSizes={[400, 200]}
-//           gutterSize={8}
-//         >
+//         <SplitPane split="vertical" minSize={400} defaultSize="80%">
 //           <div className={s.desktopPane}>
 //             <div className={s.label}>Desktop View</div>
 //             <iframe src={url} title="Desktop View" className={s.desktopIframe} />
@@ -173,7 +137,7 @@ export default function SplitView() {
 //               <iframe src={url} title="Mobile View" className={s.mobileIframe} />
 //             </div>
 //           </div>
-//         </Split>
+//         </SplitPane>
 //       </div>
 //     </div>
 //   );
